@@ -8,7 +8,7 @@ resource "aws_lambda_function" "test_lambda" {
 
   filename      = "source/lambda.zip" #lambda_function_payload.zip"
   function_name = "lambda_function_name"
-  role          = "arn:aws:iam::410052166411:role/LabRole"
+  role          = local.lab_role
   handler       = "lambda.lambda_handler"
 
   source_code_hash = data.archive_file.lambda.output_base64sha256
