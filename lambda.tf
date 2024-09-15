@@ -1,0 +1,23 @@
+data "archive_file" "lambda" {
+  type        = "zip"
+  source_file = "source/lambda.py"
+  output_path = "source/lambda.zip"
+}
+
+resource "aws_lambda_function" "test_lambda" {
+
+  filename      = "source/lambda.zip" #lambda_function_payload.zip"
+  function_name = "lambda_function_name"
+  role          = "arn:aws:iam::410052166411:role/LabRole"
+  handler       = "lambda.lambda_handler"
+
+  source_code_hash = data.archive_file.lambda.output_base64sha256
+
+  runtime = "python3.9"
+
+  environment {
+    variables = {
+      cognito_id = "bar"
+    }
+  }
+}

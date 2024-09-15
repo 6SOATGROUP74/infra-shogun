@@ -1,0 +1,586 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://aa640b9a1185c4fa2baf82b4e38bac7e-2113969685.us-east-1.elb.amazonaws.com
+    description: Generated server url
+paths:
+  /v1/produtos:
+    post:
+      tags:
+        - produto-controller
+      operationId: incluir
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProdutoRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/pedidos:
+    get:
+      tags:
+        - pedido-controller
+      operationId: listarPedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+    post:
+      tags:
+        - pedido-controller
+      operationId: salvarPedido
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PedidoRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/pagamento:
+    get:
+      tags:
+        - pagamento-controller
+      operationId: consultaStatusPagamento
+      parameters:
+        - name: pagamentoId
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+    post:
+      tags:
+        - pagamento-controller
+      operationId: realizarPagamento
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagamentoRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/pagamento/webhook:
+    post:
+      tags:
+        - pagamento-controller
+      operationId: recebeConfirmacaoDePagamentoWebhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagbankWebhookRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/clientes:
+    post:
+      tags:
+        - cliente-controller
+      operationId: incluir_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/produtos/{idProduto}:
+    delete:
+      tags:
+        - produto-controller
+      operationId: deletar
+      parameters:
+        - name: idProduto
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+    patch:
+      tags:
+        - produto-controller
+      operationId: alterar
+      parameters:
+        - name: idProduto
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProdutoRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/pedidos/atualiza:
+    patch:
+      tags:
+        - pedido-controller
+      operationId: atualizaPedido
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtualizaPedidoRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/categorias/{categoria}/produtos:
+    get:
+      tags:
+        - produto-controller
+      operationId: buscar
+      parameters:
+        - name: categoria
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProdutoResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/clientes/{cpf}:
+    get:
+      tags:
+        - cliente-controller
+      operationId: recuperar
+      parameters:
+        - name: cpf
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+components:
+  schemas:
+    ProdutoRequest:
+      required:
+        - categoria
+        - nome
+        - valor
+      type: object
+      properties:
+        nome:
+          maxLength: 255
+          minLength: 0
+          type: string
+        categoria:
+          type: string
+        valor:
+          type: number
+          format: double
+    ComposicaoRequest:
+      required:
+        - id_produto
+        - quantidade
+      type: object
+      properties:
+        quantidade:
+          type: integer
+          format: int32
+        id_produto:
+          type: integer
+          format: int64
+    PedidoRequest:
+      required:
+        - composicao
+        - id_cliente
+      type: object
+      properties:
+        composicao:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComposicaoRequest'
+        id_cliente:
+          type: integer
+          format: int64
+    PagamentoRequest:
+      required:
+        - numero_pedido
+        - tipo_do_pagamento
+      type: object
+      properties:
+        numero_pedido:
+          type: integer
+          format: int64
+        tipo_do_pagamento:
+          type: string
+          enum:
+            - QR_CODE_PAGBANK
+    Pagamento:
+      type: object
+      properties:
+        id:
+          type: string
+        reference_id:
+          type: string
+        status:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Total'
+        paid_at:
+          type: string
+    PagbankWebhookRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        charges:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagamento'
+    Total:
+      type: object
+      properties:
+        value:
+          type: integer
+          format: int64
+    ClienteRequest:
+      required:
+        - cpf
+        - email
+        - nome
+      type: object
+      properties:
+        nome:
+          maxLength: 255
+          minLength: 0
+          type: string
+        cpf:
+          type: string
+        email:
+          type: string
+    AtualizaPedidoRequest:
+      type: object
+      properties:
+        numero_pedido:
+          type: integer
+          format: int64
+        etapa:
+          type: string
+    ProdutoResponse:
+      type: object
+      properties:
+        idProduto:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        categoria:
+          type: string
+        valor:
+          type: number
+          format: double
