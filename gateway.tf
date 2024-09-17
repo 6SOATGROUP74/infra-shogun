@@ -1,25 +1,3 @@
-resource "aws_api_gateway_authorizer" "gateway_auth" {
-  name                   = "GatewayAuth"
-  rest_api_id            = aws_api_gateway_rest_api.this.id
-  identity_source        = "method.request.header.Documento"
-  authorizer_uri         = aws_lambda_function.lambda_auth.invoke_arn
-  authorizer_credentials = local.lab_role
-  type                   = "REQUEST"
-}
-
-resource "aws_api_gateway_resource" "resource_gateway" {
-  rest_api_id = aws_api_gateway_rest_api.this.id
-  parent_id   = aws_api_gateway_rest_api.this.root_resource_id
-  path_part   = "mydemoresource"
-}
-
-resource "aws_api_gateway_method" "gateway_method" {
-  rest_api_id   = aws_api_gateway_rest_api.this.id
-  resource_id   = aws_api_gateway_resource.resource_gateway.id
-  http_method   = "GET"
-  authorization = "NONE"
-}
-
 data "template_file" "user_api_swagger" {
   template = file("source/swagger/swagger.yaml")
 }
@@ -32,7 +10,6 @@ resource "aws_api_gateway_rest_api" "this" {
     types = ["REGIONAL"]
   }
 }
-
 
 data "aws_iam_policy_document" "invocation_assume_role" {
   statement {
@@ -52,7 +29,7 @@ data "aws_iam_policy_document" "invocation_assume_role" {
 resource "aws_lambda_function" "lambda_auth" {
   filename         = "source/lambda.zip"
   function_name    = "lambda_api_gateway_auth"
-  role             =  local.lab_role
+  role             = local.lab_role
   handler          = "lambda.lambda_handler"
   runtime          = "python3.9"
   source_code_hash = filebase64sha256("source/lambda.zip")
@@ -63,4 +40,33 @@ resource "aws_lambda_function" "lambda_auth" {
     }
   }
 
+}
+
+resource "aws_api_gateway_authorizer" "gateway_auth" {
+  name                   = "GatewayAuth"
+  rest_api_id            = aws_api_gateway_rest_api.this.id
+  identity_source        = "method.request.header.documento"
+  authorizer_uri         = aws_lambda_function.lambda_auth.invoke_arn
+  authorizer_credentials = local.lab_role
+  type                   = "REQUEST"
+}
+
+
+resource "aws_api_gateway_deployment" "this" {
+  rest_api_id = aws_api_gateway_rest_api.this.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.this.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+
+resource "aws_api_gateway_stage" "this" {
+  deployment_id = aws_api_gateway_deployment.this.id
+  rest_api_id   = aws_api_gateway_rest_api.this.id
+  stage_name    = "stage3"
 }

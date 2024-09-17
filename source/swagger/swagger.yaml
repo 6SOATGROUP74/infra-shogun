@@ -11,12 +11,27 @@ paths:
       tags:
         - produto-controller
       operationId: incluir
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ProdutoRequest'
         required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -49,6 +64,21 @@ paths:
       tags:
         - pedido-controller
       operationId: listarPedidos
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "GET"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -80,12 +110,27 @@ paths:
       tags:
         - pedido-controller
       operationId: salvarPedido
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/PedidoRequest'
         required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -119,12 +164,26 @@ paths:
         - pagamento-controller
       operationId: consultaStatusPagamento
       parameters:
-        - name: pagamentoId
-          in: query
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      - name: pagamentoId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "GET"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -156,12 +215,27 @@ paths:
       tags:
         - pagamento-controller
       operationId: realizarPagamento
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/PagamentoRequest'
         required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -194,12 +268,27 @@ paths:
       tags:
         - pagamento-controller
       operationId: recebeConfirmacaoDePagamentoWebhook
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/PagbankWebhookRequest'
         required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -232,12 +321,27 @@ paths:
       tags:
         - cliente-controller
       operationId: incluir_1
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ClienteRequest'
         required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -271,12 +375,26 @@ paths:
         - produto-controller
       operationId: deletar
       parameters:
-        - name: idProduto
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      - name: idProduto
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "DELETE"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -309,6 +427,11 @@ paths:
         - produto-controller
       operationId: alterar
       parameters:
+        - name: "documento"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
         - name: idProduto
           in: path
           required: true
@@ -321,6 +444,15 @@ paths:
             schema:
               $ref: '#/components/schemas/ProdutoRequest'
         required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "PATCH"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -353,12 +485,27 @@ paths:
       tags:
         - pedido-controller
       operationId: atualizaPedido
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/AtualizaPedidoRequest'
         required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "PATCH"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -386,17 +533,32 @@ paths:
                   - type: object
                     additionalProperties:
                       type: string
-  /v1/categorias/{categoria}/produtos:
+  /v1/categorias/{categoria}:
     get:
       tags:
         - produto-controller
       operationId: buscar
       parameters:
-        - name: categoria
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+
+      - name: categoria
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "GET"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -432,11 +594,25 @@ paths:
         - cliente-controller
       operationId: recuperar
       parameters:
-        - name: cpf
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      - name: cpf
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "GET"
+        uri: "https://example.com"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_MATCH"
+        type: "http"
       responses:
         '200':
           description: OK
@@ -465,6 +641,18 @@ paths:
                     additionalProperties:
                       type: string
 components:
+  securitySchemes:
+    GatewayAuth:
+      type: "apiKey"
+      name: "documento"
+      in: "header"
+      x-amazon-apigateway-authtype: "custom"
+      x-amazon-apigateway-authorizer:
+        authorizerUri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:410052166411:function:lambda_api_gateway_auth/invocations"
+        authorizerCredentials: "arn:aws:iam::410052166411:role/LabRole"
+        authorizerResultTtlInSeconds: 300
+        identitySource: "method.request.header.documento"
+        type: "request"
   schemas:
     ProdutoRequest:
       required:

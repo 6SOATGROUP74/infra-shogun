@@ -11,8 +11,8 @@ client = boto3.client('cognito-idp')
 
 def lambda_handler(event, context):
 
-    username = event['headers'].get('Documento')
-
+    username = event['headers'].get('documento')
+    print(username)
     try:
 
         response = client.admin_get_user(
@@ -48,4 +48,5 @@ def generate_policy(principal_id, effect, resource):
             ]
         }
     
+    print(auth_response)
     return auth_response
