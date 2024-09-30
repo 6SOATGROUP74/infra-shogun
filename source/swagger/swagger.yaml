@@ -27,10 +27,10 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/produtos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -74,10 +74,10 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/pedidos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -126,10 +126,10 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/pedidos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -179,10 +179,11 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/pagamento"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+          integration.request.querystring.pagamentoId: "method.request.querystring.pagamentoId"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -231,10 +232,10 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/pagamento"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -284,10 +285,10 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/pagamento/webhook"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -337,10 +338,10 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/clientes"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -390,10 +391,11 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "DELETE"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+          integration.request.path.idProduto: "method.request.path.idProduto"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -448,10 +450,11 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "PATCH"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+          integration.request.path.idProduto: "method.request.path.idProduto"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -501,10 +504,10 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "PATCH"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/pedidos/atualiza"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -554,10 +557,11 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/categorias/{categoria}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
+          integration.request.path.categoria: "method.request.path.categoria"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: "http"
       responses:
         '200':
@@ -608,38 +612,17 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com/v1/clientes/{cpf}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
-        passthroughBehavior: "WHEN_NO_MATCH"
-        type: "http"
+          integration.request.path.cpf: "method.request.path.cpf"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
       responses:
-        '200':
-          description: OK
-          content:
-            application/hal+json:
-              schema:
-                type: object
-        '400':
-          description: Bad Request
-          content:
-            application/hal+json:
-              schema:
-                oneOf:
-                  - type: object
-                  - type: object
-                    additionalProperties:
-                      type: string
-        '404':
-          description: Not Found
-          content:
-            application/hal+json:
-              schema:
-                oneOf:
-                  - type: object
-                  - type: object
-                    additionalProperties:
-                      type: string
+        default:
+          statusCode: "200"  # O API Gateway aceitará qualquer resposta do backend com status 200.
+          responseTemplates:
+            application/json: null
   /v1/cognito:
     post:
       tags:
@@ -655,6 +638,7 @@ paths:
         httpMethod: "POST"
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:410052166411:function:lambda-cognito/invocations
         credentials: "arn:aws:iam::410052166411:role/LabRole"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: aws_proxy
       responses:
         '200':
