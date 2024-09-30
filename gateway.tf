@@ -42,15 +42,6 @@ resource "aws_lambda_function" "lambda_auth" {
 
 }
 
-#resource "aws_api_gateway_authorizer" "gateway_auth" {
-#  name                   = "GatewayAuth"
-#  rest_api_id            = aws_api_gateway_rest_api.this.id
-#  identity_source        = "method.request.header.documento"
-#  authorizer_uri         = aws_lambda_function.lambda_auth.invoke_arn
-#  authorizer_credentials = local.lab_role
-#  type                   = "REQUEST"
-#}
-
 
 resource "aws_api_gateway_deployment" "this" {
   rest_api_id = aws_api_gateway_rest_api.this.id
@@ -68,5 +59,5 @@ resource "aws_api_gateway_deployment" "this" {
 resource "aws_api_gateway_stage" "this" {
   deployment_id = aws_api_gateway_deployment.this.id
   rest_api_id   = aws_api_gateway_rest_api.this.id
-  stage_name    = "stage3"
+  stage_name    = "shogun"
 }

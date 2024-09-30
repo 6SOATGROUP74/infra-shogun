@@ -6,7 +6,7 @@ data "archive_file" "lambda" {
 
 resource "aws_lambda_function" "test_lambda" {
 
-  filename      = "source/lambda.zip" #lambda_function_payload.zip"
+  filename      = "source/lambda.zip" 
   function_name = "lambda_function_name"
   role          = local.lab_role
   handler       = "lambda.lambda_handler"
@@ -17,7 +17,7 @@ resource "aws_lambda_function" "test_lambda" {
 
   environment {
     variables = {
-      cognito_id = "bar"
+      cognito_id = aws_cognito_user_pool.pool.id
     }
   }
 }

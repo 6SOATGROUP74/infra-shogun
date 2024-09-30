@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-  - url: http://aa640b9a1185c4fa2baf82b4e38bac7e-2113969685.us-east-1.elb.amazonaws.com
+  - url: http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com
     description: Generated server url
 paths:
   /v1/produtos:
@@ -27,7 +27,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -74,7 +74,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -126,7 +126,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -179,7 +179,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -231,7 +231,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -284,7 +284,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -337,7 +337,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -390,7 +390,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "DELETE"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -448,7 +448,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "PATCH"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -501,7 +501,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "PATCH"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -554,7 +554,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -608,7 +608,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "https://example.com"
+        uri: "http://a0b1ce015078c4805abe6b7657bd5a65-709652533.us-east-1.elb.amazonaws.com"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_MATCH"
@@ -632,6 +632,39 @@ paths:
                       type: string
         '404':
           description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/cognito:
+    post:
+      tags:
+        - cognito-controller
+      operationId: incluir_cognito
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteRequest'
+        required: true
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:410052166411:function:lambda-cognito/invocations
+        credentials: "arn:aws:iam::410052166411:role/LabRole"
+        type: aws_proxy
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
           content:
             application/hal+json:
               schema:
