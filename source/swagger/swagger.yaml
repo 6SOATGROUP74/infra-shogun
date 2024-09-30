@@ -1,0 +1,790 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com
+paths:
+  /v1/produtos:
+    post:
+      tags:
+        - produto-controller
+      operationId: incluir
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProdutoRequest'
+        required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/produtos"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/pedidos:
+    get:
+      tags:
+        - pedido-controller
+      operationId: listarPedidos
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "GET"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pedidos"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+    post:
+      tags:
+        - pedido-controller
+      operationId: salvarPedido
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PedidoRequest'
+        required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pedidos"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/pagamento:
+    get:
+      tags:
+        - pagamento-controller
+      operationId: consultaStatusPagamento
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      - name: pagamentoId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "GET"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pagamento"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+          integration.request.querystring.pagamentoId: "method.request.querystring.pagamentoId"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+    post:
+      tags:
+        - pagamento-controller
+      operationId: realizarPagamento
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagamentoRequest'
+        required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pagamento"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/pagamento/webhook:
+    post:
+      tags:
+        - pagamento-controller
+      operationId: recebeConfirmacaoDePagamentoWebhook
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagbankWebhookRequest'
+        required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pagamento/webhook"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/clientes:
+    post:
+      tags:
+        - cliente-controller
+      operationId: incluir_1
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteRequest'
+        required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/clientes"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/produtos/{idProduto}:
+    delete:
+      tags:
+        - produto-controller
+      operationId: deletar
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      - name: idProduto
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "DELETE"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+          integration.request.path.idProduto: "method.request.path.idProduto"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+    patch:
+      tags:
+        - produto-controller
+      operationId: alterar
+      parameters:
+        - name: "documento"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+        - name: idProduto
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProdutoRequest'
+        required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "PATCH"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+          integration.request.path.idProduto: "method.request.path.idProduto"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/pedidos/atualiza:
+    patch:
+      tags:
+        - pedido-controller
+      operationId: atualizaPedido
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtualizaPedidoRequest'
+        required: true
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "PATCH"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pedidos/atualiza"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/categorias/{categoria}:
+    get:
+      tags:
+        - produto-controller
+      operationId: buscar
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+
+      - name: categoria
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "GET"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/categorias/{categoria}"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+          integration.request.path.categoria: "method.request.path.categoria"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProdutoResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+  /v1/clientes/{cpf}:
+    get:
+      tags:
+        - cliente-controller
+      operationId: recuperar
+      parameters:
+      - name: "documento"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      - name: cpf
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+        - GatewayAuth: []
+      x-amazon-apigateway-integration:
+        httpMethod: "GET"
+        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/clientes/{cpf}"
+        requestParameters:
+          integration.request.header.documento: "method.request.header.documento"
+          integration.request.path.cpf: "method.request.path.cpf"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: "http_proxy"
+      responses:
+        default:
+          statusCode: "200"  # O API Gateway aceitará qualquer resposta do backend com status 200.
+          responseTemplates:
+            application/json: null
+  /v1/cognito:
+    post:
+      tags:
+        - cognito-controller
+      operationId: incluir_cognito
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteRequest'
+        required: true
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:410052166411:function:lambda-cognito/invocations
+        credentials: "arn:aws:iam::410052166411:role/LabRole"
+        passthroughBehavior: "WHEN_NO_TEMPLATES"
+        type: aws_proxy
+      responses:
+        '200':
+          description: OK
+          content:
+            application/hal+json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: object
+                    additionalProperties:
+                      type: string
+components:
+  securitySchemes:
+    GatewayAuth:
+      type: "apiKey"
+      name: "documento"
+      in: "header"
+      x-amazon-apigateway-authtype: "custom"
+      x-amazon-apigateway-authorizer:
+        authorizerUri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:410052166411:function:lambda_api_gateway_auth/invocations"
+        authorizerCredentials: "arn:aws:iam::410052166411:role/LabRole"
+        authorizerResultTtlInSeconds: 300
+        identitySource: "method.request.header.documento"
+        type: "request"
+  schemas:
+    ProdutoRequest:
+      required:
+        - categoria
+        - nome
+        - valor
+      type: object
+      properties:
+        nome:
+          maxLength: 255
+          minLength: 0
+          type: string
+        categoria:
+          type: string
+        valor:
+          type: number
+          format: double
+    ComposicaoRequest:
+      required:
+        - id_produto
+        - quantidade
+      type: object
+      properties:
+        quantidade:
+          type: integer
+          format: int32
+        id_produto:
+          type: integer
+          format: int64
+    PedidoRequest:
+      required:
+        - composicao
+        - id_cliente
+      type: object
+      properties:
+        composicao:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComposicaoRequest'
+        id_cliente:
+          type: integer
+          format: int64
+    PagamentoRequest:
+      required:
+        - numero_pedido
+        - tipo_do_pagamento
+      type: object
+      properties:
+        numero_pedido:
+          type: integer
+          format: int64
+        tipo_do_pagamento:
+          type: string
+          enum:
+            - QR_CODE_PAGBANK
+    Pagamento:
+      type: object
+      properties:
+        id:
+          type: string
+        reference_id:
+          type: string
+        status:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Total'
+        paid_at:
+          type: string
+    PagbankWebhookRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        charges:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagamento'
+    Total:
+      type: object
+      properties:
+        value:
+          type: integer
+          format: int64
+    ClienteRequest:
+      required:
+        - cpf
+        - email
+        - nome
+      type: object
+      properties:
+        nome:
+          maxLength: 255
+          minLength: 0
+          type: string
+        cpf:
+          type: string
+        email:
+          type: string
+    AtualizaPedidoRequest:
+      type: object
+      properties:
+        numero_pedido:
+          type: integer
+          format: int64
+        etapa:
+          type: string
+    ProdutoResponse:
+      type: object
+      properties:
+        idProduto:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        categoria:
+          type: string
+        valor:
+          type: number
+          format: double
