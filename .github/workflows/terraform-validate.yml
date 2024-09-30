@@ -26,16 +26,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: "Terraform init"
-        working-directory: ./src
         run: terraform init
 
       - name: "Terraform validate"
-        working-directory: ./src
         run: terraform validate
 
       - name: Terraform Plan
         id: plan
-        working-directory: ./src
         run: terraform plan -out=tfplan
 
   create-pr:

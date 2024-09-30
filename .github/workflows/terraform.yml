@@ -23,16 +23,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: "Terraform init"
-        working-directory: ./src
         run: terraform init
 
       - name: Terraform Plan
-        working-directory: ./src
         id: plan
         run: terraform plan -out=tfplan
 
       - name: Terraform Apply
-        working-directory: ./src
         if: success()
         run: terraform apply -auto-approve tfplan
   
