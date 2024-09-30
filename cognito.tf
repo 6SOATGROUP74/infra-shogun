@@ -17,5 +17,5 @@ resource "aws_cognito_resource_server" "resource" {
 
 resource "aws_cognito_user" "cognito_users" {
   user_pool_id = aws_cognito_user_pool.pool.id
-  username     = "48265391854"
+  username     = "GUEST"
 }
