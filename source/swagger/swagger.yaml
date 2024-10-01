@@ -3,7 +3,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-  - url: http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com
+  - url: http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com 
 paths:
   /v1/produtos:
     post:
@@ -26,7 +26,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/produtos"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/produtos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -73,7 +73,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pedidos"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/pedidos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -125,7 +125,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pedidos"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/pedidos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -178,7 +178,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pagamento"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/pagamento"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.querystring.pagamentoId: "method.request.querystring.pagamentoId"
@@ -231,7 +231,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pagamento"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/pagamento"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -284,7 +284,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pagamento/webhook"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/pagamento/webhook"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -337,7 +337,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/clientes"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/clientes"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -390,7 +390,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "DELETE"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/produtos/{idProduto}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.path.idProduto: "method.request.path.idProduto"
@@ -449,7 +449,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "PATCH"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/produtos/{idProduto}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.path.idProduto: "method.request.path.idProduto"
@@ -503,7 +503,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "PATCH"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/pedidos/atualiza"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/pedidos/atualiza"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -556,7 +556,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/categorias/{categoria}"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/categorias/{categoria}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.path.categoria: "method.request.path.categoria"
@@ -611,7 +611,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://add8af6a6c5fd4b1aabe930e2683a12b-1537520851.us-east-1.elb.amazonaws.com/v1/clientes/{cpf}"
+        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com /v1/clientes/{cpf}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.path.cpf: "method.request.path.cpf"
