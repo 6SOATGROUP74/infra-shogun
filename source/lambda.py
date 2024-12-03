@@ -32,6 +32,8 @@ def lambda_handler(event, context):
 
 def generate_policy(principal_id, effect, resource):
 
+    arn_pattern = "/".join(resource.split("/")[:2]) + "/*/*"
+
     auth_response = {
         "principalId": principal_id
     }
@@ -43,7 +45,7 @@ def generate_policy(principal_id, effect, resource):
                 {
                     "Action": "execute-api:Invoke",
                     "Effect": effect,
-                    "Resource": resource
+                    "Resource": arn_pattern
                 }
             ]
         }

@@ -26,7 +26,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/produtos"
+        uri: "http://a542dad71462940beb5a8a0c610d3772-1409910477.us-east-1.elb.amazonaws.com/v1/produtos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -73,7 +73,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/pedidos"
+        uri: "http://aaee0159130324015bc35e26fe67c6a8-984293553.us-east-1.elb.amazonaws.com/v1/pedidos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -125,7 +125,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/pedidos"
+        uri: "http://aaee0159130324015bc35e26fe67c6a8-984293553.us-east-1.elb.amazonaws.com/v1/pedidos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -178,7 +178,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/pagamento"
+        uri: "http://a1d23f03f33f94f51995976dfdfc8be4-990202056.us-east-1.elb.amazonaws.com/v1/pagamento"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.querystring.pagamentoId: "method.request.querystring.pagamentoId"
@@ -231,7 +231,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/pagamento"
+        uri: "http://a1d23f03f33f94f51995976dfdfc8be4-990202056.us-east-1.elb.amazonaws.com/v1/pagamento"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -337,7 +337,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/clientes"
+        uri: "http://a8e4464fb23794b62a3d7f8e6351c8b8-100722653.us-east-1.elb.amazonaws.com/v1/clientes"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -390,7 +390,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "DELETE"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
+        uri: "http://a542dad71462940beb5a8a0c610d3772-1409910477.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.path.idProduto: "method.request.path.idProduto"
@@ -449,7 +449,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "PATCH"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
+        uri: "http://a542dad71462940beb5a8a0c610d3772-1409910477.us-east-1.elb.amazonaws.com/v1/produtos/{idProduto}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.path.idProduto: "method.request.path.idProduto"
@@ -482,7 +482,7 @@ paths:
                   - type: object
                     additionalProperties:
                       type: string
-  /v1/pedidos/atualiza:
+  /v1/pedidos/envia-pedido:
     patch:
       tags:
         - pedido-controller
@@ -503,7 +503,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "PATCH"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/pedidos/atualiza"
+        uri: "http://aaee0159130324015bc35e26fe67c6a8-984293553.us-east-1.elb.amazonaws.com/v1/pedidos/atualiza"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
@@ -556,7 +556,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/categorias/{categoria}"
+        uri: "http://a542dad71462940beb5a8a0c610d3772-1409910477.us-east-1.elb.amazonaws.com/v1/categoria/{categoria}/produtos"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.path.categoria: "method.request.path.categoria"
@@ -611,7 +611,7 @@ paths:
         - GatewayAuth: []
       x-amazon-apigateway-integration:
         httpMethod: "GET"
-        uri: "http://aa90dc0b44e32462b9ad862d36db6d99-363106408.us-east-1.elb.amazonaws.com/v1/clientes/{cpf}"
+        uri: "http://a8e4464fb23794b62a3d7f8e6351c8b8-100722653.us-east-1.elb.amazonaws.com/v1/clientes/{cpf}"
         requestParameters:
           integration.request.header.documento: "method.request.header.documento"
           integration.request.path.cpf: "method.request.path.cpf"
@@ -635,8 +635,8 @@ paths:
         required: true
       x-amazon-apigateway-integration:
         httpMethod: "POST"
-        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:410052166411:function:lambda-cognito/invocations
-        credentials: "arn:aws:iam::410052166411:role/LabRole"
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:585814035402:function:lambda-cognito/invocations
+        credentials: "arn:aws:iam::585814035402:role/LabRole"
         passthroughBehavior: "WHEN_NO_TEMPLATES"
         type: aws_proxy
       responses:
@@ -664,8 +664,8 @@ components:
       in: "header"
       x-amazon-apigateway-authtype: "custom"
       x-amazon-apigateway-authorizer:
-        authorizerUri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:410052166411:function:lambda_api_gateway_auth/invocations"
-        authorizerCredentials: "arn:aws:iam::410052166411:role/LabRole"
+        authorizerUri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:585814035402:function:lambda_api_gateway_auth/invocations"
+        authorizerCredentials: "arn:aws:iam::585814035402:role/LabRole"
         authorizerResultTtlInSeconds: 300
         identitySource: "method.request.header.documento"
         type: "request"
@@ -773,7 +773,10 @@ components:
         numero_pedido:
           type: integer
           format: int64
-        etapa:
+        id_pagamento:
+          type: integer
+          format: int64
+        status_pedido:
           type: string
     ProdutoResponse:
       type: object
